@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using HoopStackWebsite.Pages.Level;
+using Microsoft.AspNetCore.Hosting;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
-namespace HoopStackSolver
+namespace HoopStackWebsite.Solver
 {
-    internal class Move //a single move
+    public class Move //a single move
     {
         public int step; //step when the move was made
         public int from; //stack hoop was moved from
@@ -23,7 +29,7 @@ namespace HoopStackSolver
         }
     }
 
-    internal class Moves //track the moves of each step in a solution
+    public class Moves //track the moves of each step in a solution
     {
         public List<List<Move>> moveLists;
         //each list in moveLists holds a list of steps for the solution
@@ -34,8 +40,62 @@ namespace HoopStackSolver
         }
     }
 
-    class HoopStack
+    public class HoopStackSolver
     {
+        //*************************WEBHOST*************************
+        public IWebHostEnvironment WebHostEnvironment { get; }
+        public HoopStackSolver(IWebHostEnvironment webHostEnvironment)
+        {
+            WebHostEnvironment = webHostEnvironment;
+        }
+
+        private string JsonFileName
+        {
+            get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "levels.json"); }
+        }
+
+        public IEnumerable<Level> GetLevels()
+        {
+            using (var jsonFileReader = File.OpenText(JsonFileName))
+            {
+                return JsonSerializer.Deserialize<Level[]>(jsonFileReader.ReadToEnd(),
+                    new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+            }
+        }
+
+/*        public void AddLevel(string productId, int rating)
+        {
+            var levels = GetLevels();
+
+            if (levels.First(x => x.Id == productId).Ratings == null)
+            {
+                levels.First(x => x.Id == productId).Ratings = new int[] { rating };
+            }
+            else
+            {
+                var level = levels.First(x => x.Id == productId).Ratings.ToList();
+                levels.Add(level);
+                levels.First(x => x.Id == productId).Ratings = ratings.ToArray();
+            }
+
+            using (var outputStream = File.OpenWrite(JsonFileName))
+            {
+                JsonSerializer.Serialize<IEnumerable<Level>>(
+                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
+                    {
+                        SkipValidation = true,
+                        Indented = true
+                    }),
+                    products
+                );
+            }
+        }*/
+
+        //*************************WEBHOST*************************
+
         public static List<List<string>> init() //manual stack input
         {
             List<List<string>> stacks = new List<List<string>>();
