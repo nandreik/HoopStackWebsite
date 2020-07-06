@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <!--Dont really need a menu bar for different pages, maybe in the future
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">HoopStackWebsite</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Hoop Stack Level Solver</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,15 +21,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
+                        <!-- dont need privacy nav bar
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        -->
+                        <!-- dont need this, moved level entry to home page (index)
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/LevelEntry/AddLevel">Add Level</a>
+                        </li>
+                        -->
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    -->
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -39,7 +45,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
+            <!--get rid of the privacy link 
             &copy; 2020 - HoopStackWebsite - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            -->
+            &copy; 2020 - HoopStackWebsite
         </div>
     </footer>
 

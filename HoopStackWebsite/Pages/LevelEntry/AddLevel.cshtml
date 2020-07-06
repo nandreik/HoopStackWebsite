@@ -1,20 +1,8 @@
 ﻿@page
-@model IndexModel
+@model HoopStackWebsite.Pages.LevelEntry.AddLevelModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "AddLevel";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Hoop Stack Level Solver</h1>
-    <p style="text-align:left;">
-        <b><u>DIRECTIONS</u></b>
-        <br />1: Input level number and number of stacks in your level.
-        <br />2: Input colors of each stack from Bottom to Top, starting from the Top-Left stack.
-        <br />&emsp;&emsp;Ex: Blue,Green,Green,Red
-        <br />3: Leave unused stacks blank and SUBMIT.
-    </p>
-</div>
-
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +12,7 @@
 <body>
     <form method="post">
         <fieldset>
-            <legend><u>Add Level</u></legend>
+            <legend>Level Entry</legend>
             <div>
                 <input type="number" asp-for="Level.LevelNum" placeholder="Level" />
             </div>
@@ -63,10 +51,15 @@
             </div>
             <div>
                 <button type="submit">Submit</button>
-                @*<input type="submit" value="Submit" class="submit" />*@
             </div>
-            
+            <!-- This button looks better but not sure if it functions differently from the above button type
+            <div>
+                <input type="submit" value="Submit" class="submit" />
+            </div>
+            -->
         </fieldset>
     </form>
 </body>
 </html>
+
+

@@ -13,5 +13,10 @@ namespace HoopStackWebsite.Pages
         {
 
         }
+
+        public void post()
+        {
+
+        }
     }
 }
