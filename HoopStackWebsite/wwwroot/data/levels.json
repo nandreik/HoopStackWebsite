@@ -1,0 +1,67 @@
+[
+  {
+    "levelNum": -1,
+    "stacks": [
+      [
+        "test"
+      ]
+    ],
+    "instructions": [],
+    "error": "No Error"
+  },
+  {
+    "levelNum": 504,
+    "stacks": [
+      [
+        "b",
+        "b",
+        "pr",
+        "p",
+        "pr"
+      ],
+      [
+        "g",
+        "g",
+        "b"
+      ],
+      [
+        "p",
+        "p",
+        "g",
+        "g"
+      ],
+      [
+        "pr",
+        "b",
+        "g"
+      ],
+      [
+        "pr",
+        "p",
+        "p",
+        "b",
+        "pr"
+      ]
+    ],
+    "instructions": [
+      "Step 0:  Move \u0027g\u0027 from Stack 3 to Stack 2",
+      "Step 1:  Move \u0027b\u0027 from Stack 3 to Stack 1",
+      "Step 2:  Move \u0027pr\u0027 from Stack 0 to Stack 3",
+      "Step 3:  Move \u0027pr\u0027 from Stack 4 to Stack 3",
+      "Step 4:  Move \u0027b\u0027 from Stack 4 to Stack 1",
+      "Step 5:  Move \u0027p\u0027 from Stack 0 to Stack 4",
+      "Step 6:  Move \u0027pr\u0027 from Stack 0 to Stack 3",
+      "Step 7:  Move \u0027b\u0027 from Stack 1 to Stack 0",
+      "Step 8:  Move \u0027b\u0027 from Stack 1 to Stack 0",
+      "Step 9:  Move \u0027b\u0027 from Stack 1 to Stack 0",
+      "Step 10:  Move \u0027g\u0027 from Stack 2 to Stack 1",
+      "Step 11:  Move \u0027g\u0027 from Stack 2 to Stack 1",
+      "Step 12:  Move \u0027g\u0027 from Stack 2 to Stack 1",
+      "Step 13:  Move \u0027p\u0027 from Stack 4 to Stack 2",
+      "Step 14:  Move \u0027p\u0027 from Stack 4 to Stack 2",
+      "Step 15:  Move \u0027p\u0027 from Stack 4 to Stack 2",
+      "Step 16:  Move \u0027pr\u0027 from Stack 4 to Stack 3"
+    ],
+    "error": "No Error"
+  }
+]

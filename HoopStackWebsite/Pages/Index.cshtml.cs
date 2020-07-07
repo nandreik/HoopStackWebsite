@@ -8,21 +8,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using HoopStackWebsite.Pages.Solver.Level;
+using HoopStackWebsite.Controllers;
+using HoopStackWebsite.Services;
 
 namespace HoopStackWebsite.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        public HoopStackSolver _solver;
-        // put a input form here?
+        // put a input form here
         [BindProperty] //binds input from level entry to the LevelEntryModel Level
-        public LevelEntryModel Level { get; set; }
+        public LevelEntryModel LevelModel { get; set; }
+        public JsonLevelService levelService { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, HoopStackSolver solver)
+        public LevelsController levelsController { get; set; } //idk if this is how to use the levels controller api
+
+        public IndexModel(ILogger<IndexModel> logger, JsonLevelService levelService)
         {
             _logger = logger;
-            _solver = solver;
+            this.levelService = levelService;
+            this.levelsController = new LevelsController(this.levelService);
         }
 
         public void OnGet()
@@ -38,7 +43,8 @@ namespace HoopStackWebsite.Pages
                             return Page();
                         }*/
             // save model to db
-            Level level = new Level(Level);
+            Level level = new Level(LevelModel);
+            levelsController.Patch(level);
 
             // temp else redirect to index
             return RedirectToPage("/Index");

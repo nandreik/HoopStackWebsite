@@ -1,7 +1,10 @@
-﻿using HoopStackWebsite.Models;
+﻿using HoopStackWebsite.Controllers;
+using HoopStackWebsite.Models;
 using HoopStackWebsite.Solver;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -21,8 +24,9 @@ namespace HoopStackWebsite.Pages.Solver.Level
         public List<string> Instructions { get; set; } //instructions for the solution
         [JsonPropertyName("error")]
         public string Error { get; set; } //possible variable for reporting bugs in the solver?
-
+        [JsonIgnore]
         public Moves Solutions { get; set; }
+        [JsonIgnore]
         public List<Move> WrongMoves { get; set; }
 
         public Level(LevelEntryModel LevelModel)
@@ -58,9 +62,21 @@ namespace HoopStackWebsite.Pages.Solver.Level
             }
             //solve the stacks in this constructor or do it another way?
             HoopStackSolver.solveLevel(this);
+            //string json = this.ToString();
         }
 
-        public override string ToString()
+        public Level() //parameterless constructor needed for json deserialization? 
+        {
+            this.LevelNum = 0;
+            this.Error = null;
+            this.Stacks = new List<List<string>>();
+            this.Instructions = new List<string>();
+            this.Solutions = new Moves();
+            this.WrongMoves = new List<Move>();
+            this.Stacks = new List<List<string>>();
+        }
+
+        public override string ToString() //turn this level obj into a json format
         {
             return JsonSerializer.Serialize<Level>(this);
         }

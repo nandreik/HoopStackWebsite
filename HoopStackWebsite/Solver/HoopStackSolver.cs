@@ -42,60 +42,6 @@ namespace HoopStackWebsite.Solver
 
     public class HoopStackSolver
     {
-        //*************************WEBHOST*************************
-        public IWebHostEnvironment WebHostEnvironment { get; }
-        public HoopStackSolver(IWebHostEnvironment webHostEnvironment)
-        {
-            WebHostEnvironment = webHostEnvironment;
-        }
-
-        private string JsonFileName
-        {
-            get { return Path.Combine(WebHostEnvironment.WebRootPath, "Data", "levels.json"); }
-        }
-
-        public IEnumerable<Level> GetLevels()
-        {
-            using (var jsonFileReader = File.OpenText(JsonFileName))
-            {
-                return JsonSerializer.Deserialize<Level[]>(jsonFileReader.ReadToEnd(),
-                    new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
-            }
-        }
-
-/*        public void AddLevel(string productId, int rating)
-        {
-            var levels = GetLevels();
-
-            if (levels.First(x => x.Id == productId).Ratings == null)
-            {
-                levels.First(x => x.Id == productId).Ratings = new int[] { rating };
-            }
-            else
-            {
-                var level = levels.First(x => x.Id == productId).Ratings.ToList();
-                levels.Add(level);
-                levels.First(x => x.Id == productId).Ratings = ratings.ToArray();
-            }
-
-            using (var outputStream = File.OpenWrite(JsonFileName))
-            {
-                JsonSerializer.Serialize<IEnumerable<Level>>(
-                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
-                    {
-                        SkipValidation = true,
-                        Indented = true
-                    }),
-                    products
-                );
-            }
-        }*/
-
-        //*************************WEBHOST*************************
-
         public static List<List<string>> init() //manual stack input
         {
             List<List<string>> stacks = new List<List<string>>();
@@ -239,7 +185,7 @@ namespace HoopStackWebsite.Solver
             return move;
         }
 
-        public static bool solveLevel(Level level) //algorithm to solve the puzzle 
+        public static bool solveLevel(Level level) //algorithm to solve the puzzle to solve a Level obj 
         {
             List<List<string>> stacks = level.Stacks;
             Moves solutions = level.Solutions;
@@ -624,7 +570,7 @@ namespace HoopStackWebsite.Solver
                                         }
                                         if (!makeMove) break; //if next move is a wrong move, break Move m = move(stacks, step, tempCount, minStack);
                                         Move m = move(ref stacks, step, tempCount, minStack);
-                                        string instruction = "Step " + (m.step) + ":  Move '" + m.color + "' from Stack " + m.from + "to Stack " + m.to;
+                                        string instruction = "Step " + (m.step) + ":  Move '" + m.color + "' from Stack " + m.from + " to Stack " + m.to;
                                         instructions.Add(instruction);
                                         //Console.WriteLine(instruction);
                                         movedToMinStack = true;
