@@ -65,7 +65,7 @@ namespace HoopStackWebsite.Pages.Solver.Level
             //string json = this.ToString();
         }
 
-        public Level() //parameterless constructor needed for json deserialization? 
+        public Level() //parameterless constructor needed for json deserialization
         {
             this.LevelNum = 0;
             this.Error = null;

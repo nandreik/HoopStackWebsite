@@ -63,5 +63,24 @@
       "Step 16:  Move \u0027pr\u0027 from Stack 4 to Stack 3"
     ],
     "error": "No Error"
+  },
+  {
+    "levelNum": -1,
+    "stacks": [
+      [
+        "a"
+      ],
+      [
+        "b"
+      ],
+      [
+        "c"
+      ],
+      [
+        "d"
+      ]
+    ],
+    "instructions": [],
+    "error": "No Error"
   }
 ]

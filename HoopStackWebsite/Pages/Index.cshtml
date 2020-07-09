@@ -21,26 +21,33 @@
     <div class="container">
         <div>
             <div class="level-entry">
-                <form method="post">
+                <form asp-page-handler="input" method="post">
                     <fieldset>
                         <legend><u>Solve Level</u></legend>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div>
                             <input type="number" asp-for="LevelModel.LevelNum" placeholder="Level Number" />
+                            <span asp-validation-for="LevelModel.LevelNum" class="text-danger"></span>
                         </div>
                         <div>
                             <input type="number" asp-for="LevelModel.NumStacks" placeholder="Number of Stacks" />
+                            <span asp-validation-for="LevelModel.NumStacks" class="text-danger"></span>
                         </div>
                         <div>
                             <input type="text" asp-for="LevelModel.Stack1" placeholder="Stack 1 Colors" />
+                            <span asp-validation-for="LevelModel.Stack1" class="text-danger"></span>
                         </div>
                         <div>
                             <input type="text" asp-for="LevelModel.Stack2" placeholder="Stack 2 Colors" />
+                            <span asp-validation-for="LevelModel.Stack2" class="text-danger"></span>
                         </div>
                         <div>
                             <input type="text" asp-for="LevelModel.Stack3" placeholder="Stack 3 Colors" />
+                            <span asp-validation-for="LevelModel.Stack3" class="text-danger"></span>
                         </div>
                         <div>
                             <input type="text" asp-for="LevelModel.Stack4" placeholder="Stack 4 Colors" />
+                            <span asp-validation-for="LevelModel.Stack4" class="text-danger"></span>
                         </div>
                         <div>
                             <input type="text" asp-for="LevelModel.Stack5" placeholder="Stack 5 Colors" />
@@ -67,7 +74,7 @@
                 </form>
             </div>
             <div class="seach-level">
-                <form method="get">
+                <form asp-page-handler="search" method="post">
                     <fieldset>
                         <legend><u>Search Level</u></legend>
                         <div>
@@ -83,6 +90,7 @@
         <div class="level-solution">
             <fieldset>
                 <legend><u>Level Solution</u></legend>
+                <div id="level-num"></div>
                 <div id="solution">
                     Input or Search Level for a Solution
                 </div>

@@ -34,26 +34,59 @@ namespace HoopStackWebsite.Pages
 
         public void OnGet()
         {
-           /* var searchLevels = levelService.GetLevels();
-            if (searchLevel.HasValue) //if searchlevel has a value search for levels in db with same level num
-            {
-                searchLevels = searchLevels.Where(s => s.LevelNum == searchLevel);
-            }
-            //IList<Level> iListLevels = searchLevels.ToList()
-            levels = searchLevels;
-*/
+
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostInput()
         {
-            //need to add validation b/c rn it fails if not all fields are filled
+            //added validation
             if (ModelState.IsValid == false) //if validation fails, return page
             {
+                // save model to db
+                Level level = new Level(LevelModel);
+                levelsController.Patch(level);
+                //show level solution somehow
+
+
+
                 return Page();
             }
             // save model to db
-            Level level = new Level(LevelModel);
-            levelsController.Patch(level);
+            //Level level = new Level(LevelModel);
+            //levelsController.Patch(level);
+
+            // temp else redirect to index
+            return RedirectToPage("/Index");
+        }
+
+        public IActionResult OnPostSearch()
+        {
+            if (searchLevel.HasValue) //if validation fails, return page
+            {
+                // look for level with level num
+                var levels = levelsController.levelService.GetLevels(); //get all levels
+                List<Level> matching = new List<Level>(); //any levels that match searched level
+                foreach (Level level in levels) //check to see if any levels match
+                {
+                    if (level.LevelNum == searchLevel)
+                    {
+                        matching.Add(level);
+                    }
+                }
+                if (matching.Count == 0) //if no matching levels found
+                {
+                    // display not found somehow
+
+
+                }
+                else
+                {
+                    // display found levels somehow 
+
+
+
+                }
+            }
 
             // temp else redirect to index
             return RedirectToPage("/Index");
