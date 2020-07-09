@@ -29,6 +29,7 @@ namespace HoopStackWebsite
             services.AddRazorPages();
             services.AddTransient<JsonLevelService>();
             services.AddControllers();
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +57,7 @@ namespace HoopStackWebsite
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapBlazorHub();
             });
         }
     }

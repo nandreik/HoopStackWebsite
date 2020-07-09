@@ -4,68 +4,90 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Hoop Stack Level Solver</h1>
-    <p style="text-align:left;">
-        <b><u>DIRECTIONS</u></b>
-        <br />1: Input level number and number of stacks in your level.
-        <br />2: Input colors of each stack from Bottom to Top, starting from the Top-Left stack.
-        <br />&emsp;&emsp;Ex: Blue,Green,Green,Red
-        <br />3: Leave unused stacks blank and SUBMIT.
-    </p>
-</div>
-
-
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Level Entry</title>
-</head>
 <body>
-    <form method="post">
-        <fieldset>
-            <legend><u>Add Level</u></legend>
-            <div>
-                <input type="number" asp-for="LevelModel.LevelNum" placeholder="Level" />
+    <div class="text-center" style="display:flex">
+        <h1 class="display-4">Hoop Stack Level Solver</h1>
+        <p style="text-align:left; margin-left: 40px">
+            <b><u>DIRECTIONS</u></b>
+            <br />1: Input level number and number of stacks in your level.
+            <br />2: Start from Top-Left stack.
+            <br />3: Input colors of each stack from Bottom to Top.
+            <br />&emsp;&emsp;Ex: Blue,Green,Green,Red
+            <br />4: Leave unused stacks blank and submit.
+        </p>
+    </div>
+    <div class="container">
+        <div>
+            <div class="level-entry">
+                <form method="post">
+                    <fieldset>
+                        <legend><u>Solve Level</u></legend>
+                        <div>
+                            <input type="number" asp-for="LevelModel.LevelNum" placeholder="Level Number" />
+                        </div>
+                        <div>
+                            <input type="number" asp-for="LevelModel.NumStacks" placeholder="Number of Stacks" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack1" placeholder="Stack 1 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack2" placeholder="Stack 2 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack3" placeholder="Stack 3 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack4" placeholder="Stack 4 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack5" placeholder="Stack 5 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack6" placeholder="Stack 6 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack7" placeholder="Stack 7 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack9" placeholder="Stack 8 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack9" placeholder="Stack 9 Colors" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="LevelModel.Stack10" placeholder="Stack 10 Colors" />
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit" class="submit" />
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-            <div>
-                <input type="number" asp-for="LevelModel.NumStacks" placeholder="Number of Stacks" />
+            <div class="seach-level">
+                <form method="get">
+                    <fieldset>
+                        <legend><u>Search Level</u></legend>
+                        <div>
+                            <input type="number" asp-for="searchLevel" placeholder="Level Number" />
+                        </div>
+                        <div>
+                            <input type="submit" value="Search" />
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack1" placeholder="Stack 1 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack2" placeholder="Stack 2 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack3" placeholder="Stack 3 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack4" placeholder="Stack 4 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack5" placeholder="Stack 5 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack6" placeholder="Stack 6 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack7" placeholder="Stack 7 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack9" placeholder="Stack 8 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack9" placeholder="Stack 9 Colors" />
-            </div>
-            <div>
-                <input type="text" asp-for="LevelModel.Stack10" placeholder="Stack 10 Colors" />
-            </div>
-            <div>
-                <input type="submit" value="Submit" class="submit" />
-            </div>
-            
-        </fieldset>
-    </form>
+        </div>
+        <div class="level-solution">
+            <fieldset>
+                <legend><u>Level Solution</u></legend>
+                <div id="solution">
+                    Input or Search Level for a Solution
+                </div>
+            </fieldset>
+        </div>
+    </div>
 </body>
 </html>
