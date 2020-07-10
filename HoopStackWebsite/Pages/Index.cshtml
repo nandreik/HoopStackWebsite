@@ -1,4 +1,5 @@
 ﻿@page
+@using HoopStackWebsite.Pages.Solver.Level;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -8,10 +9,10 @@
 <html>
 <body>
     <div class="text-center" style="display:flex">
-        <h1 class="display-4">Hoop Stack Level Solver</h1>
-        <p style="text-align:left; margin-left: 40px">
+        <h1 class="display-4"><b>Hoop Stack <br />Level Solver</b></h1>
+        <p style="text-align:left; margin-left: 100px">
             <b><u>DIRECTIONS</u></b>
-            <br />1: Input level number and number of stacks in your level.
+            <br />1: Input level number and number of stacks.
             <br />2: Start from Top-Left stack.
             <br />3: Input colors of each stack from Bottom to Top.
             <br />&emsp;&emsp;Ex: Blue,Green,Green,Red
@@ -87,13 +88,30 @@
                 </form>
             </div>
         </div>
-        <div class="level-solution">
+        <div class="level-solution" method="post">
             <fieldset>
                 <legend><u>Level Solution</u></legend>
-                <div id="level-num"></div>
-                <div id="solution">
-                    Input or Search Level for a Solution
-                </div>
+                @if (Model.error)
+                {
+                    <h6>Level Not Found</h6>
+                }
+                else if (Model.displayLevels.Count > 0)
+                {
+                    foreach (var level in Model.displayLevels)
+                    {
+                    <div>
+                        <h6>Level @level.LevelNum Instructions:</h6>
+                        @foreach (string inst in level.Instructions)
+                        {
+                            <div style="font-size: 20px">@inst</div>
+                        }
+                    </div>
+                    }
+                }
+                else
+                {
+                    <h6>Input or Search Level for Solution</h6>
+                }
             </fieldset>
         </div>
     </div>

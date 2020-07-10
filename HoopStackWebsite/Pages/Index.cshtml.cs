@@ -25,29 +25,33 @@ namespace HoopStackWebsite.Pages
         public int? searchLevel { get; set; }
         public IEnumerable<Level> levels { get; set; }
 
+        public List<Level> displayLevels { get; set; }
+        public bool error { get; set; } //if not found or solution doesnt work
+
         public IndexModel(ILogger<IndexModel> logger, JsonLevelService levelService)
         {
             _logger = logger;
             this.levelService = levelService;
             this.levelsController = new LevelsController(this.levelService);
+            this.error = false;
+            this.displayLevels = new List<Level>();
         }
 
         public void OnGet()
         {
-
+            //levels = levelService.GetLevels();
         }
 
         public IActionResult OnPostInput()
         {
             //added validation
-            if (ModelState.IsValid == false) //if validation fails, return page
+            if (ModelState.IsValid == true) //if validation fails, return page
             {
                 // save model to db
                 Level level = new Level(LevelModel);
                 levelsController.Patch(level);
                 //show level solution somehow
-
-
+                displayLevels.Add(level);
 
                 return Page();
             }
@@ -76,15 +80,17 @@ namespace HoopStackWebsite.Pages
                 if (matching.Count == 0) //if no matching levels found
                 {
                     // display not found somehow
+                    // gross way to display a not found level
+                    error = true;
 
-
+                    return Page();
                 }
                 else
                 {
                     // display found levels somehow 
 
-
-
+                    displayLevels = matching;
+                    return Page();
                 }
             }
 
