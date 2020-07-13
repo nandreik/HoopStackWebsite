@@ -60,7 +60,7 @@
                             <input type="text" asp-for="LevelModel.Stack7" placeholder="Stack 7 Colors" />
                         </div>
                         <div>
-                            <input type="text" asp-for="LevelModel.Stack9" placeholder="Stack 8 Colors" />
+                            <input type="text" asp-for="LevelModel.Stack8" placeholder="Stack 8 Colors" />
                         </div>
                         <div>
                             <input type="text" asp-for="LevelModel.Stack9" placeholder="Stack 9 Colors" />
@@ -91,21 +91,25 @@
         <div class="level-solution" method="post">
             <fieldset>
                 <legend><u>Level Solution</u></legend>
-                @if (Model.error)
+                @if (Model.errorSearch)
                 {
                     <h6>Level Not Found</h6>
+                }
+                else if (Model.errorSolve)
+                {
+                    <h6>Level Could Not Be Solved</h6>
                 }
                 else if (Model.displayLevels.Count > 0)
                 {
                     foreach (var level in Model.displayLevels)
                     {
-                    <div>
-                        <h6>Level @level.LevelNum Instructions:</h6>
-                        @foreach (string inst in level.Instructions)
-                        {
-                            <div style="font-size: 20px">@inst</div>
-                        }
-                    </div>
+                        <div>
+                            <h6>Level @level.LevelNum Instructions:</h6>
+                            @foreach (string inst in level.Instructions)
+                            {
+                                <div style="font-size: 20px">@inst</div>
+                            }
+                        </div>
                     }
                 }
                 else

@@ -26,14 +26,16 @@ namespace HoopStackWebsite.Pages
         public IEnumerable<Level> levels { get; set; }
 
         public List<Level> displayLevels { get; set; }
-        public bool error { get; set; } //if not found or solution doesnt work
+        public bool errorSearch { get; set; } //if not found 
+        public bool errorSolve { get; set; } //if not found 
 
         public IndexModel(ILogger<IndexModel> logger, JsonLevelService levelService)
         {
             _logger = logger;
             this.levelService = levelService;
             this.levelsController = new LevelsController(this.levelService);
-            this.error = false;
+            this.errorSearch = false;
+            this.errorSolve = false;
             this.displayLevels = new List<Level>();
         }
 
@@ -47,17 +49,18 @@ namespace HoopStackWebsite.Pages
             //added validation
             if (ModelState.IsValid == true) //if validation fails, return page
             {
-                // save model to db
-                Level level = new Level(LevelModel);
-                levelsController.Patch(level);
-                //show level solution somehow
-                displayLevels.Add(level);
+                var task = Task.Run(() => new Level(LevelModel)); //give solver 15 seconds to try to solve level, if not solved, show error
+                if (task.Wait(TimeSpan.FromSeconds(15)))
+                {
+                    if (!LevelExists(task.Result))
+                        levelsController.Patch(task.Result);
+                    displayLevels.Add(task.Result);
+                }
+                else
+                    errorSolve = true;
 
                 return Page();
             }
-            // save model to db
-            //Level level = new Level(LevelModel);
-            //levelsController.Patch(level);
 
             // temp else redirect to index
             return RedirectToPage("/Index");
@@ -81,7 +84,7 @@ namespace HoopStackWebsite.Pages
                 {
                     // display not found somehow
                     // gross way to display a not found level
-                    error = true;
+                    errorSearch = true;
 
                     return Page();
                 }
@@ -96,6 +99,17 @@ namespace HoopStackWebsite.Pages
 
             // temp else redirect to index
             return RedirectToPage("/Index");
+        }
+
+        public bool LevelExists(Level newLevel)
+        {
+            var levels = levelService.GetLevels();
+            foreach (Level level in levels)
+            {
+                if (newLevel.ToString() == level.ToString())
+                    return true;
+            }
+            return false;
         }
     }
 }
