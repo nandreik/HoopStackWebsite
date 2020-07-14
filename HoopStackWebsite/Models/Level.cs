@@ -17,7 +17,7 @@ namespace HoopStackWebsite.Pages.Solver.Level
         //public LevelEntryModel LevelModel { get; set; } //get the level info from levelentrymodel
 
         [JsonPropertyName("levelNum")]
-        public int LevelNum { get; set; } //level number
+        public int? LevelNum { get; set; } //level number
         [JsonPropertyName("stacks")]
         public List<List<string>> Stacks { get; set; } //stacks of the level
         [JsonPropertyName("instructions")]
@@ -67,7 +67,7 @@ namespace HoopStackWebsite.Pages.Solver.Level
 
         public Level() //parameterless constructor needed for json deserialization
         {
-            this.LevelNum = 0;
+            this.LevelNum = null;
             this.Error = null;
             this.Stacks = new List<List<string>>();
             this.Instructions = new List<string>();

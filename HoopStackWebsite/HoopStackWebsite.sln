@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HoopStackWebsite", "HoopStackWebsite.csproj", "{0E60D546-8E28-4B13-B08E-1472511DFF6C}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "..\Database\Database.sqlproj", "{5756B0F7-AE9C-4F17-AA6E-0FC2427F1634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "..\DataAccessLibrary\DataAccessLibrary.csproj", "{E76F3F84-1C3D-4961-84EA-F1102C884E3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,16 @@ Global
 		{0E60D546-8E28-4B13-B08E-1472511DFF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E60D546-8E28-4B13-B08E-1472511DFF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E60D546-8E28-4B13-B08E-1472511DFF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5756B0F7-AE9C-4F17-AA6E-0FC2427F1634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5756B0F7-AE9C-4F17-AA6E-0FC2427F1634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5756B0F7-AE9C-4F17-AA6E-0FC2427F1634}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5756B0F7-AE9C-4F17-AA6E-0FC2427F1634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5756B0F7-AE9C-4F17-AA6E-0FC2427F1634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5756B0F7-AE9C-4F17-AA6E-0FC2427F1634}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E76F3F84-1C3D-4961-84EA-F1102C884E3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E76F3F84-1C3D-4961-84EA-F1102C884E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E76F3F84-1C3D-4961-84EA-F1102C884E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E76F3F84-1C3D-4961-84EA-F1102C884E3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
