@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace DataAccessLibrary
 {
-    class SqlDataAccess
+    public class SqlDataAccess : ISqlDataAccess
     {
         private readonly IConfiguration _config;
 
@@ -32,7 +32,7 @@ namespace DataAccessLibrary
             }
         }
 
-        public async Task SaveData<T, U>(string sql, U parameters)
+        public async Task SaveData<T>(string sql, T parameters)
         {
             string connectionString = _config.GetConnectionString(ConnectionStringName);
 

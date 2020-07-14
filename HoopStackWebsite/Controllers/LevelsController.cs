@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HoopStackWebsite.Pages.Solver.Level;
+using HoopStackWebsite.Models.Level;
 using HoopStackWebsite.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

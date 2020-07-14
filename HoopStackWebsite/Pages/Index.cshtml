@@ -1,5 +1,5 @@
 ﻿@page
-@using HoopStackWebsite.Pages.Solver.Level;
+@using HoopStackWebsite.Models.Level;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -10,7 +10,7 @@
 <body>
     <div class="title" style="text-align:center">
         <h1 class="display-4"><b>Hoop Stack Level Solver</b></h1>
-        <legend><u>Directions</u></legend>
+        <u>Directions</u>
         <div class="directions" style="">
             <p style="display: inline-block; text-align: left">
                 1: Input level number and number of stacks.
@@ -112,7 +112,6 @@
                                 </li>
                             }
                         </ul>
-
                     }
                 }
                 else

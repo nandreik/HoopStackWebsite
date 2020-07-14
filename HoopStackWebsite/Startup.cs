@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccessLibrary;
 using HoopStackWebsite.Controllers;
 using HoopStackWebsite.Services;
 using HoopStackWebsite.Solver;
@@ -30,6 +31,8 @@ namespace HoopStackWebsite
             services.AddTransient<JsonLevelService>();
             services.AddControllers();
             services.AddServerSideBlazor();
+            services.AddTransient<ISqlDataAccess, SqlDataAccess>();
+            services.AddTransient<LevelData, LevelData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

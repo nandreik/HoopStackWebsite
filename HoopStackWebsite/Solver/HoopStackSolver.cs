@@ -1,4 +1,4 @@
-﻿using HoopStackWebsite.Pages.Solver.Level;
+﻿using HoopStackWebsite.Models.Level;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;

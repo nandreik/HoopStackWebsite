@@ -291,5 +291,82 @@
       "Step 53:  Move \u0027g\u0027 from Stack 9 to Stack 7"
     ],
     "error": "No Error"
+  },
+  {
+    "levelNum": 487,
+    "stacks": [
+      [
+        "lb",
+        "g",
+        "g",
+        "lb",
+        "lb"
+      ],
+      [
+        "g",
+        "pr",
+        "pr"
+      ],
+      [
+        "p",
+        "lb",
+        "p",
+        "pr",
+        "pr"
+      ],
+      [
+        "pr",
+        "lb",
+        "lb",
+        "g",
+        "p",
+        "p"
+      ],
+      [
+        "pr",
+        "g",
+        "g",
+        "p",
+        "p"
+      ]
+    ],
+    "instructions": [
+      "Step 0:  Move \u0027pr\u0027 from Stack 2 to Stack 1",
+      "Step 1:  Move \u0027pr\u0027 from Stack 2 to Stack 1",
+      "Step 2:  Move \u0027p\u0027 from Stack 2 to Stack 4",
+      "Step 3:  Move \u0027lb\u0027 from Stack 2 to Stack 0",
+      "Step 4:  Move \u0027p\u0027 from Stack 3 to Stack 2",
+      "Step 5:  Move \u0027p\u0027 from Stack 3 to Stack 2",
+      "Step 6:  Move \u0027p\u0027 from Stack 4 to Stack 2",
+      "Step 7:  Move \u0027p\u0027 from Stack 4 to Stack 2",
+      "Step 8:  Move \u0027p\u0027 from Stack 4 to Stack 2",
+      "Step 9:  Move \u0027g\u0027 from Stack 3 to Stack 4",
+      "Step 10:  Move \u0027lb\u0027 from Stack 0 to Stack 3",
+      "Step 11:  Move \u0027lb\u0027 from Stack 0 to Stack 3",
+      "Step 12:  Move \u0027lb\u0027 from Stack 0 to Stack 3",
+      "Step 13:  Move \u0027g\u0027 from Stack 4 to Stack 0",
+      "Step 14:  Move \u0027g\u0027 from Stack 4 to Stack 0",
+      "Step 15:  Move \u0027g\u0027 from Stack 4 to Stack 0",
+      "Step 16:  Move \u0027pr\u0027 from Stack 1 to Stack 4",
+      "Step 17:  Move \u0027pr\u0027 from Stack 1 to Stack 4",
+      "Step 18:  Move \u0027pr\u0027 from Stack 1 to Stack 4",
+      "Step 19:  Move \u0027pr\u0027 from Stack 1 to Stack 4",
+      "Step 20:  Move \u0027g\u0027 from Stack 0 to Stack 1",
+      "Step 21:  Move \u0027g\u0027 from Stack 0 to Stack 1",
+      "Step 22:  Move \u0027g\u0027 from Stack 0 to Stack 1",
+      "Step 23:  Move \u0027g\u0027 from Stack 0 to Stack 1",
+      "Step 24:  Move \u0027g\u0027 from Stack 0 to Stack 1",
+      "Step 25:  Move \u0027lb\u0027 from Stack 3 to Stack 0",
+      "Step 26:  Move \u0027lb\u0027 from Stack 3 to Stack 0",
+      "Step 27:  Move \u0027lb\u0027 from Stack 3 to Stack 0",
+      "Step 28:  Move \u0027lb\u0027 from Stack 3 to Stack 0",
+      "Step 29:  Move \u0027lb\u0027 from Stack 3 to Stack 0",
+      "Step 30:  Move \u0027pr\u0027 from Stack 4 to Stack 3",
+      "Step 31:  Move \u0027pr\u0027 from Stack 4 to Stack 3",
+      "Step 32:  Move \u0027pr\u0027 from Stack 4 to Stack 3",
+      "Step 33:  Move \u0027pr\u0027 from Stack 4 to Stack 3",
+      "Step 34:  Move \u0027pr\u0027 from Stack 4 to Stack 3"
+    ],
+    "error": "No Error"
   }
 ]

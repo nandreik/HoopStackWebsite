@@ -14,7 +14,7 @@ namespace DataAccessLibrary
         {
             _db = db;
         }
-
+        
         public Task<List<LevelModel>> GetLevels()
         {
             string sql = "select * from dbo.Level";
