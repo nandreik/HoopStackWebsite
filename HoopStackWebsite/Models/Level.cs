@@ -1,4 +1,5 @@
-﻿using HoopStackWebsite.Controllers;
+﻿using DataAccessLibrary.Models;
+using HoopStackWebsite.Controllers;
 using HoopStackWebsite.Models;
 using HoopStackWebsite.Solver;
 using Microsoft.AspNetCore.Hosting;
@@ -23,7 +24,7 @@ namespace HoopStackWebsite.Models.Level
         [JsonPropertyName("error")]
         public string Error { get; set; } //possible variable for reporting bugs in the solver?
         [JsonIgnore]
-        public Moves Solutions { get; set; }
+        public List<List<Move>> Solutions { get; set; }
         [JsonIgnore]
         public List<Move> WrongMoves { get; set; }
 
@@ -33,7 +34,7 @@ namespace HoopStackWebsite.Models.Level
             this.LevelNum = LevelModel.LevelNum; //get level number
             this.Stacks = new List<List<string>>();
             this.Instructions = new List<string>();
-            this.Solutions = new Moves();
+            this.Solutions = new List<List<Move>>();
             this.WrongMoves = new List<Move>();
             int numStacks = LevelModel.NumStacks; //get the colors for numStacks stacks
             for (int i = 0; i < numStacks; i++)
@@ -60,7 +61,41 @@ namespace HoopStackWebsite.Models.Level
             }
             //solve the stacks in this constructor or do it another way?
             HoopStackSolver.solveLevel(this);
-            //string json = this.ToString();
+        }
+
+        public Level(LevelModel LevelModel)
+        {
+            //create level from LevelModel
+            this.LevelNum = LevelModel.LevelNum; //get level number
+            this.Stacks = new List<List<string>>();
+            this.Instructions = new List<string>();
+            this.Solutions = new List<List<Move>>();
+            this.WrongMoves = new List<Move>();
+            int numStacks = LevelModel.NumStacks; //get the colors for numStacks stacks
+            for (int i = 0; i < numStacks; i++)
+            {
+                string stack = i switch
+                {
+                    0 => LevelModel.Stack1,
+                    1 => LevelModel.Stack2,
+                    2 => LevelModel.Stack3,
+                    3 => LevelModel.Stack4,
+                    4 => LevelModel.Stack5,
+                    5 => LevelModel.Stack6,
+                    6 => LevelModel.Stack7,
+                    7 => LevelModel.Stack8,
+                    8 => LevelModel.Stack9,
+                    9 => LevelModel.Stack10,
+                    _ => "Could not retrieve stack.",
+                };
+                string[] words = stack.Split(",");
+                List<string> temp = new List<string>();
+                foreach (var word in words)
+                    temp.Add(word);
+                this.Stacks.Add(temp);
+            }
+            //solve the stacks in this constructor or do it another way?
+            HoopStackSolver.solveLevel(this);
         }
 
         public Level() //parameterless constructor needed for json deserialization
@@ -69,7 +104,7 @@ namespace HoopStackWebsite.Models.Level
             this.Error = null;
             this.Stacks = new List<List<string>>();
             this.Instructions = new List<string>();
-            this.Solutions = new Moves();
+            this.Solutions = new List<List<Move>>();
             this.WrongMoves = new List<Move>();
             this.Stacks = new List<List<string>>();
         }
