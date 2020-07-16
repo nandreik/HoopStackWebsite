@@ -21,4 +21,9 @@ It was made primarily as my own introduction to .Net Core, C#, and to get an ide
 		1: If there is an empty stack, move the most common Top of Stack (TOS) hoops to that empty stack.
 		2: If there is a stack with only one color, move any other TOS with the same color to that stack.
 		3: If not 1 or 2, choose the shortest stack and move any TOS that match the TOS of the shortest stack to it.
-		4: If the last move created a error (no possible moves to make or an infinite loop) then add that previous move to a list of Wrong Moves and recursively solve the puzzle again, without making that move. 
+		4: If the last move created a error (no possible moves to make or an infinite loop) 
+		then add that previous move to a list of Wrong Moves and recursively solve the puzzle again, 
+		without making that move. 
+
+
+
