@@ -1,6 +1,7 @@
 # Hoop Stack Solver
 
 This project is a level solver for the mobile game Hoop Stack. 
+
 It was made primarily as my own introduction to .Net Core, C#, and to get an idea of full stack development using the MVC design pattern. 
 
 ## Features 
