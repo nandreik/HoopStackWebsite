@@ -14,7 +14,7 @@ It was made primarily as my own introduction to .Net Core, C#, and to get an ide
 #### 4) Functional SQL Database 
 	The database stores previous levels for the Level Search functionality. 
 	New levels are checked with the database before they are inserted to avoid duplicates. 
-#### 5) Custom Hoop Stack Algorithm 
+#### 5) Custom Level Solver Algorithm 
 	A self-implemented recursive algorithm was written to solve Hoop Stack levels. 
 	The algorithm follows 4 different rules for solving a level:
 	
