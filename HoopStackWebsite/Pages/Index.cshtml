@@ -9,8 +9,8 @@
 <html>
 <body>
     <div class="title" style="text-align:center">
-        <h1 class="display-4"><b>Hoop Stack Level Solver</b></h1>
-        <u>Directions</u>
+        <h1 class="display-4" style="padding-bottom: 2%"><b>Hoop Stack Level Solver</b></h1>
+        @*<u>Directions</u>
         <div class="directions" style="">
             <p style="display: inline-block; text-align: left">
                 1: Input level number and number of stacks.
@@ -19,10 +19,24 @@
                 <br />&emsp;&emsp;Ex: Blue,Green,Green,Red
                 <br />4: Leave unused stacks blank and submit.
             </p>
-        </div>
+        </div>*@
     </div>
     <dv class="wrap" style="">
         <div class="left" style="">
+            <u>Directions</u>
+            <div class="directions" style="">
+                <p style="display: inline-block; text-align: left">
+                    1: Input level number and number of stacks. <br />
+                    2: Start with stack 1, going from the top-left. <br />
+                    3: Start with the color at the bottom of stack. <br />
+                    4: Input colors of each stack separated by only a comma. <br />
+                    &emsp;&emsp;Ex: Color 1,Color 2,Color 3 <br />
+                    5: Leave unused stacks blank and submit.
+                </p>
+            </div>
+            <div>
+                <img src="@Url.Content("~/images/hs level ex.png")" alt="Level Input Example" class="image">
+            </div>
             <form asp-page-handler="input" method="post">
                 <fieldset>
                     <legend><u>Solve Level</u></legend>
@@ -74,7 +88,9 @@
                     </div>
                 </fieldset>
             </form>
-            <div class="seach-level">
+        </div>
+        <div class="right" method="post" style="">
+            <div class="seach-level" style="padding-bottom: 10%">
                 <form asp-page-handler="search" method="post">
                     <fieldset>
                         <legend><u>Search Level</u></legend>
@@ -87,8 +103,6 @@
                     </fieldset>
                 </form>
             </div>
-        </div>
-        <div class="right" method="post" style="">
             <fieldset>
                 <legend><u>Level Solution</u></legend>
                 @if (Model.errorSearch)

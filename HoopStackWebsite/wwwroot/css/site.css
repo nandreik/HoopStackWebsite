@@ -86,9 +86,23 @@ body {
     margin-bottom: 10%;
 }
 
+.search-level {
+    padding-bottom: 10%
+}
+
 li {
     background: none;
 }
 li:nth-child(odd) {
     background-color: lightgray;
+}
+
+.image {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    height: auto;
+    width: auto;
+    max-width: 70%;
+    max-height: 70%;
 }
