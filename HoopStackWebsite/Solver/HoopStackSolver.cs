@@ -29,17 +29,6 @@ namespace HoopStackWebsite.Solver
         }
     }
 
-    /*public class Moves //track the moves of each step in a solution
-    {
-        public List<List<Move>> moveLists;
-        //each list in moveLists holds a list of steps for the solution
-
-        public Moves()
-        {
-            this.moveLists = new List<List<Move>>();
-        }
-    }*/
-
     public class HoopStackSolver
     {
         public static List<List<string>> init() //manual stack input

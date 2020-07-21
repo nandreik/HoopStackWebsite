@@ -10,8 +10,8 @@ using Microsoft.Extensions.Logging;
 using HoopStackWebsite.Models.Level;
 using HoopStackWebsite.Controllers;
 using HoopStackWebsite.Services;
-using DataAccessLibrary;
-using DataAccessLibrary.Models;
+//using DataAccessLibrary;
+//using DataAccessLibrary.Models;
 
 namespace HoopStackWebsite.Pages
 {
@@ -29,9 +29,9 @@ namespace HoopStackWebsite.Pages
         public bool errorSearch { get; set; } //if not found 
         public bool errorSolve { get; set; } //if not solved
 
-        public LevelData Database { get; set; } //db
+        //public LevelData Database { get; set; } //db
 
-        public IndexModel(ILogger<IndexModel> logger, JsonLevelService levelService, LevelData levelData)
+        /*public IndexModel(ILogger<IndexModel> logger, JsonLevelService levelService, LevelData levelData)
         {
             _logger = logger;
             this.levelService = levelService;
@@ -40,6 +40,16 @@ namespace HoopStackWebsite.Pages
             this.errorSolve = false;
             this.displayLevels = new List<Level>();
             this.Database = levelData;
+        }*/
+
+        public IndexModel(ILogger<IndexModel> logger, JsonLevelService levelService)
+        {
+            _logger = logger;
+            this.levelService = levelService;
+            this.levelsController = new LevelsController(this.levelService);
+            this.errorSearch = false;
+            this.errorSolve = false;
+            this.displayLevels = new List<Level>();
         }
 
         public void OnGet()
@@ -59,10 +69,10 @@ namespace HoopStackWebsite.Pages
                     {
                         levelsController.Patch(task.Result);
                     }
-                    if (LevelExistsDb(task.Result).Result == null) //check db
+                    /*if (LevelExistsDb(task.Result).Result == null) //check db
                     {
                         InsertDb(task.Result);
-                    }
+                    }*/
                     displayLevels.Add(task.Result);
                 }
                 else
@@ -75,24 +85,24 @@ namespace HoopStackWebsite.Pages
             return RedirectToPage("/Index");
         }
 
-        public async Task<IActionResult> OnPostSearch()
+        public async Task<IActionResult> OnPostSearch() //await warning since not using db
         {
             if (searchLevel.HasValue) //if validation fails, return page
             {
                 List<Level> matching = new List<Level>(); //any levels that match searched level
 
                 // look for level using jsonfile
-                /* var levels = levelsController.levelService.GetLevels(); //get all levels
-                 foreach (var level in levels) //check to see if any levels match 
-                 {
-                     if (level.LevelNum == searchLevel)
-                     {
-                         matching.Add(level);
-                     }
-                 }*/
+                var levels = levelsController.levelService.GetLevels(); //get all levels
+                foreach (var level in levels) //check to see if any levels match 
+                {
+                    if (level.LevelNum == searchLevel)
+                    {
+                        matching.Add(level);
+                    }
+                }
 
                 // look for level using db
-                var levelsDb = await Database.GetLevels();
+                /*var levelsDb = await Database.GetLevels();
                 foreach (var levelModel in levelsDb) //check to see if any levels match 
                 {
                     if (levelModel.LevelNum == searchLevel)
@@ -100,7 +110,7 @@ namespace HoopStackWebsite.Pages
                         Level searchedLevel = new Level(levelModel);
                         matching.Add(searchedLevel);
                     }
-                }
+                }*/
                 if (matching.Count == 0) //if no matching levels found
                 {
                     errorSearch = true;
@@ -129,7 +139,7 @@ namespace HoopStackWebsite.Pages
             return false;
         }
 
-        public async Task<LevelModel> LevelExistsDb(Level newLevel) //checks database if newLevel is already in it (if not null; true, if null; false)
+        /*public async Task<LevelModel> LevelExistsDb(Level newLevel) //checks database if newLevel is already in it (if not null; true, if null; false)
         {
             LevelModel newLevelModel = toLevelModel(newLevel); //make LevelModel from newLevel in a horrible way
             var levels = await Database.GetLevels();
@@ -139,15 +149,15 @@ namespace HoopStackWebsite.Pages
                     return level;
             }
             return null;
-        }
+        }*/
 
-        public void InsertDb(Level newLevel) //method for inserting a level to db
+        /*public void InsertDb(Level newLevel) //method for inserting a level to db
         {
             LevelModel newLevelModel = toLevelModel(newLevel); //make LevelModel from newLevel for db entry in a horrible way
             Database.InsertLevel(newLevelModel);
-        }
+        }*/
 
-        public LevelModel toLevelModel(Level newLevel) //method to convert LevelModel to Level
+        /*public LevelModel toLevelModel(Level newLevel) //method to convert LevelModel to Level
         {
             LevelModel newLevelModel = new LevelModel(); //make LevelModel from newLevel
             newLevelModel.LevelNum = newLevel.LevelNum;
@@ -174,6 +184,6 @@ namespace HoopStackWebsite.Pages
                 newLevelModel.Stack10 = string.Join(",", newLevel.Stacks[9]);
 
             return newLevelModel;
-        }
+        }*/
     }
 }
