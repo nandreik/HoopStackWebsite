@@ -85,7 +85,7 @@ namespace HoopStackWebsite.Pages
             return RedirectToPage("/Index");
         }
 
-        public async Task<IActionResult> OnPostSearch() //await warning since not using db
+        public IActionResult OnPostSearch() 
         {
             if (searchLevel.HasValue) //if validation fails, return page
             {
