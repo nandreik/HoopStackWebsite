@@ -150,5 +150,63 @@
       "Step 37:  Move \u0027orange\u0027 from Stack 7 to Stack 6"
     ],
     "error": "No Error"
+  },
+  {
+    "levelNum": 111,
+    "stacks": [
+      [
+        "b",
+        "g",
+        "b",
+        "pr"
+      ],
+      [
+        "g",
+        "pr",
+        "r"
+      ],
+      [
+        "p",
+        "p",
+        "pr",
+        "g"
+      ],
+      [
+        "pr",
+        "p",
+        "p",
+        "r"
+      ],
+      [
+        "r"
+      ],
+      [
+        "b",
+        "b",
+        "g",
+        "r"
+      ]
+    ],
+    "instructions": [
+      "Step 0:  Move \u0027r\u0027 from Stack 1 to Stack 4",
+      "Step 1:  Move \u0027r\u0027 from Stack 3 to Stack 4",
+      "Step 2:  Move \u0027r\u0027 from Stack 5 to Stack 4",
+      "Step 3:  Move \u0027pr\u0027 from Stack 0 to Stack 1",
+      "Step 4:  Move \u0027g\u0027 from Stack 2 to Stack 5",
+      "Step 5:  Move \u0027pr\u0027 from Stack 2 to Stack 1",
+      "Step 6:  Move \u0027p\u0027 from Stack 3 to Stack 2",
+      "Step 7:  Move \u0027p\u0027 from Stack 3 to Stack 2",
+      "Step 8:  Move \u0027pr\u0027 from Stack 1 to Stack 3",
+      "Step 9:  Move \u0027pr\u0027 from Stack 1 to Stack 3",
+      "Step 10:  Move \u0027pr\u0027 from Stack 1 to Stack 3",
+      "Step 11:  Move \u0027g\u0027 from Stack 5 to Stack 1",
+      "Step 12:  Move \u0027g\u0027 from Stack 5 to Stack 1",
+      "Step 13:  Move \u0027b\u0027 from Stack 0 to Stack 5",
+      "Step 14:  Move \u0027g\u0027 from Stack 0 to Stack 1",
+      "Step 15:  Move \u0027b\u0027 from Stack 5 to Stack 0",
+      "Step 16:  Move \u0027b\u0027 from Stack 5 to Stack 0",
+      "Step 17:  Move \u0027b\u0027 from Stack 5 to Stack 0"
+    ],
+    "error": "No Error"
   }
 ]
