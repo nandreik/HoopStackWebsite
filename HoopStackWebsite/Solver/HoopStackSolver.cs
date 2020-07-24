@@ -228,7 +228,7 @@ namespace HoopStackWebsite.Solver
                     if (makeMove)
                     {
                         Move m = move(ref stacks, solMove.step, solMove.from, solMove.to);
-                        string instruction = "Step " + (m.step) + ":  Move '" + m.color + "' from Stack " + m.from + " to Stack " + m.to;
+                        string instruction = "Step " + (m.step + 1) + ":  Move '" + m.color + "' from Stack " + (m.from + 1) + " to Stack " + (m.to + 1);
                         instructions.Add(instruction);
                         //Console.WriteLine(instruction);
                         sol.Add(m);
@@ -418,7 +418,7 @@ namespace HoopStackWebsite.Solver
                                         }
                                         if (!makeMove) break; //if next move is a wrong move, break
                                         Move m = move(ref stacks, step, count, minStack);
-                                        string instruction = "Step " + (m.step) + ":  Move '" + m.color + "' from Stack " + m.from + " to Stack " + m.to;
+                                        string instruction = "Step " + (m.step + 1) + ":  Move '" + m.color + "' from Stack " + (m.from + 1) + " to Stack " + (m.to + 1);
                                         instructions.Add(instruction);
                                         //Console.WriteLine(instruction);
                                         step++; //inc step counter
@@ -481,7 +481,7 @@ namespace HoopStackWebsite.Solver
                                                 }
                                                 if (!makeMove) break; //if next move is a wrong move, break
                                                 Move m = move(ref stacks, step, tempCount, minStack);
-                                                string instruction = "Step " + (m.step) + ":  Move '" + m.color + "' from Stack " + m.from + " to Stack " + m.to;
+                                                string instruction = "Step " + (m.step + 1) + ":  Move '" + m.color + "' from Stack " + (m.from + 1) + " to Stack " + (m.to + 1);
                                                 instructions.Add(instruction);
                                                 //Console.WriteLine(instruction);
                                                 step++; //inc step counter
@@ -559,7 +559,7 @@ namespace HoopStackWebsite.Solver
                                         }
                                         if (!makeMove) break; //if next move is a wrong move, break Move m = move(stacks, step, tempCount, minStack);
                                         Move m = move(ref stacks, step, tempCount, minStack);
-                                        string instruction = "Step " + (m.step) + ":  Move '" + m.color + "' from Stack " + m.from + " to Stack " + m.to;
+                                        string instruction = "Step " + (m.step + 1) + ":  Move '" + m.color + "' from Stack " + (m.from + 1) + " to Stack " + (m.to + 1);
                                         instructions.Add(instruction);
                                         //Console.WriteLine(instruction);
                                         movedToMinStack = true;
@@ -602,7 +602,7 @@ namespace HoopStackWebsite.Solver
                                         break;
                                     }
                                     Move m = move(ref stacks, step, posMove.from, posMove.to);
-                                    string instruction = "Step " + (m.step) + ":  Move '" + m.color + "' from Stack " + m.from + " to Stack " + m.to;
+                                    string instruction = "Step " + (m.step + 1) + ":  Move '" + m.color + "' from Stack " + (m.from + 1) + " to Stack " + (m.to + 1);
                                     instructions.Add(instruction);
                                     //Console.WriteLine(instruction);
                                     step++; //inc step counter
