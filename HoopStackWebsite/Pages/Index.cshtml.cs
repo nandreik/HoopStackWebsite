@@ -12,6 +12,7 @@ using HoopStackWebsite.Controllers;
 using HoopStackWebsite.Services;
 //using DataAccessLibrary;
 //using DataAccessLibrary.Models;
+//noDB branch works on website. need to make a new publish profile to avoid auth error
 
 namespace HoopStackWebsite.Pages
 {
