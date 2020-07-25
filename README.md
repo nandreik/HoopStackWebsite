@@ -1,4 +1,5 @@
-# Hoop Stack Solver https://hoopstacksolver.azurewebsites.net/
+# Hoop Stack Solver
+https://hoopstacksolver.azurewebsites.net/
 ## **IF SITE IS DOWN IT IS POSSIBLY BECUASE THE 1HR/DAY COMPUTATION TIME HAS BEEN USED**
 This project is a level solver for the mobile game Hoop Stack. 
 
