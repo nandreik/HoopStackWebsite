@@ -1,6 +1,6 @@
 # Hoop Stack Solver
 https://hoopstacksolver.azurewebsites.net/
-## **IF SITE IS DOWN IT IS POSSIBLY BECUASE THE 1HR/DAY COMPUTATION TIME HAS BEEN USED**
+**IF SITE IS DOWN IT IS POSSIBLY BECUASE THE 1HR/DAY COMPUTATION TIME HAS BEEN USED BY THE FREE AZURE HOST SERVICE**
 This project is a level solver for the mobile game Hoop Stack. 
 
 It was made primarily as my own introduction to .Net Core, C#, and to get an idea of full stack development using the MVC design pattern. 
