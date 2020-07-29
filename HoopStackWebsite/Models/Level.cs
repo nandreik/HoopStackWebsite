@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace HoopStackWebsite.Models.Level
@@ -53,7 +54,8 @@ namespace HoopStackWebsite.Models.Level
                     9 => LevelModel.Stack10,
                     _ => "Could not retrieve stack.",
                 };
-                string[] words = stack.Split(",");
+                /*string[] words = stack.Split(",");*/
+                string[] words = Regex.Split(stack, @"(?:\s*,\s*)|\s+");
                 List<string> temp = new List<string>();
                 foreach (var word in words)
                     temp.Add(word);
