@@ -53,7 +53,7 @@ namespace HoopStackWebsite.Models.Level
                     9 => LevelModel.Stack10,
                     _ => "Could not retrieve stack.",
                 };
-                string[] words = stack.Split(",");
+                string[] words = Regex.Split(stack, @"(?:\s*,\s*)|\s+");
                 List<string> temp = new List<string>();
                 foreach (var word in words)
                     temp.Add(word);
