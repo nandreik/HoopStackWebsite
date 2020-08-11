@@ -102,20 +102,27 @@ namespace HoopStackWebsite.Solver
         public static List<Move> numMoves(List<List<string>> stacks, int maxHeight, int step) //return all possible moves at current step
         {
             List<Move> posMoves = new List<Move>();
-            for (int i = 0; i < stacks.Count; i++)
+            for (int i = 0; i < stacks.Count; i++) //for all stacks FROM
             {
                 List<string> from = stacks[i];
                 int fromSize = from.Count;
-                string fromColor = from[fromSize - 1];
-                for (int j = 0; j < stacks.Count; j++)
+                if (fromSize != 0) //check from stack is not empty
                 {
-                    List<string> to = stacks[j];
-                    int toSize = to.Count;
-                    if (from[fromSize - 1] == to[toSize - 1] && i != j && toSize < maxHeight) //if two dif stacks have common TOS & < maxHeight
+                    string fromColor = from[fromSize - 1];
+                    for (int j = 0; j < stacks.Count; j++) //for all stacks TO
                     {
-                        //List<int> move = new List<int>() { i, j };
-                        Move posMove = new Move(step, i, j, fromColor);
-                        posMoves.Add(posMove);
+                        List<string> to = stacks[j];
+                        int toSize = to.Count;
+                        if (toSize == 0)
+                        {
+                            Move posMove = new Move(step, i, j, fromColor);
+                            posMoves.Add(posMove);
+                        }
+                        else if (from[fromSize - 1] == to[toSize - 1] && i != j && toSize < maxHeight) //if two dif stacks have common TOS & < maxHeight
+                        {
+                            Move posMove = new Move(step, i, j, fromColor);
+                            posMoves.Add(posMove);
+                        }
                     }
                 }
             }
@@ -159,7 +166,7 @@ namespace HoopStackWebsite.Solver
             return true;
         }
 
-        public static Move move(ref List<List<string>> stacks, int step, int from, int to) //from a hoop FROM one stack TO another
+        public static Move move(ref List<List<string>> stacks, int step, int from, int to) //move a hoop FROM one stack TO another
         {
             string fromColor= "";
             string toColor = "";

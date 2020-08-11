@@ -111,6 +111,18 @@ namespace HoopStackWebsite.Models.Level
             this.Stacks = new List<List<string>>();
         }
 
+        public Level(int LevelNum, List<List<string>> Stacks) 
+        {
+            this.LevelNum = LevelNum;
+            this.Error = null;
+            this.Stacks = Stacks;
+            this.Instructions = new List<string>();
+            this.Solutions = new List<List<Move>>();
+            this.WrongMoves = new List<Move>();
+            this.Stacks = new List<List<string>>();
+            HoopStackSolver.solveLevel(this);
+        }
+
         public override string ToString() //turn this level obj into a json format
         {
             return JsonSerializer.Serialize<Level>(this);
