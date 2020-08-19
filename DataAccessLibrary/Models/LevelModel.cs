@@ -9,7 +9,6 @@ namespace DataAccessLibrary.Models
         public int LevelNum { get; set; }
         public int NumStacks { get; set; }
 
-        /*public List<List<string>> Stacks { get; set; }*/
         public string Stack1 { get; set; }
         public string Stack2 { get; set; }
         public string Stack3 { get; set; }

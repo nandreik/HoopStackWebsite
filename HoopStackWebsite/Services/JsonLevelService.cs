@@ -38,9 +38,20 @@ namespace HoopStackWebsite.Services
         public void AddLevel(Level newLevel)
         {
             IEnumerable<Level> levels = GetLevels();
-            levels = levels.Concat(new[] { newLevel }); //"add" the new level by concating it with the old levels 
-            //update json file with new level
-            writeJsonData(levels);
+            //check that level is not in the json file
+            bool exists = false; 
+            foreach (Level l in levels)
+            {
+                if (l.ToString() == newLevel.ToString())
+                {
+                    exists = true;
+                }
+            }
+            if (!exists)
+            {
+                levels = levels.Concat(new[] { newLevel }); //"add" the new level by concating it with the old levels 
+                writeJsonData(levels); //update json file with new level
+            }
         }
 
         public void writeJsonData(IEnumerable<Level> levels) //write level data to the json file of all levels 
@@ -56,6 +67,17 @@ namespace HoopStackWebsite.Services
                     levels
                 );
             }
+        }
+
+        public bool LevelExistsJson(Level newLevel) //checks json file for levels
+        {
+            var levels = GetLevels();
+            foreach (Level level in levels)
+            {
+                if (newLevel.ToString() == level.ToString())
+                    return true;
+            }
+            return false;
         }
     }
 }

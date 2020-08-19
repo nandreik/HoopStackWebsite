@@ -42,12 +42,12 @@ namespace HoopStackWebsite.Pages
             this.Database = levelData;
         }
 
-        public void OnGet()
+        public void OnGet() //no on get usage currently 
         {
             //levels = levelService.GetLevels();
         }
 
-        public IActionResult OnPostInput()
+        public IActionResult OnPostInput() //razor page handler method
         {
             //added validation
             if (ModelState.IsValid) //if validation fails, return page
@@ -55,13 +55,13 @@ namespace HoopStackWebsite.Pages
                 var task = Task.Run(() => new Level(LevelModel)); //give solver 15 seconds to try to solve level, if not solved, show error
                 if (task.Wait(TimeSpan.FromSeconds(10)))
                 {
-                    if (!LevelExistsJson(task.Result)) //check json file 
+                    if (!levelService.LevelExistsJson(task.Result)) //check json file 
                     {
                         levelsController.Patch(task.Result);
                     }
                     if (LevelExistsDb(task.Result).Result == null) //check db
                     {
-                        InsertDb(task.Result);
+                        Database.InsertLevel(task.Result.toLevelModel(task.Result));
                     }
                     displayLevels.Add(task.Result);
                 }
@@ -75,7 +75,7 @@ namespace HoopStackWebsite.Pages
             return RedirectToPage("/Index");
         }
 
-        public async Task<IActionResult> OnPostSearch()
+        public async Task<IActionResult> OnPostSearch() //razor page handler method
         {
             if (searchLevel.HasValue) //if validation fails, return page
             {
@@ -104,7 +104,6 @@ namespace HoopStackWebsite.Pages
                 if (matching.Count == 0) //if no matching levels found
                 {
                     errorSearch = true;
-
                     return Page();
                 }
                 else
@@ -118,20 +117,9 @@ namespace HoopStackWebsite.Pages
             return RedirectToPage("/Index");
         }
 
-        public bool LevelExistsJson(Level newLevel) //checks json file for levels
-        {
-            var levels = levelService.GetLevels(); 
-            foreach (Level level in levels)
-            {
-                if (newLevel.ToString() == level.ToString())
-                    return true;
-            }
-            return false;
-        }
-
         public async Task<LevelModel> LevelExistsDb(Level newLevel) //checks database if newLevel is already in it (if not null; true, if null; false)
         {
-            LevelModel newLevelModel = toLevelModel(newLevel); //make LevelModel from newLevel in a horrible way
+            LevelModel newLevelModel = newLevel.toLevelModel(newLevel); //make LevelModel from newLevel in a horrible way
             var levels = await Database.GetLevels();
             foreach (var level in levels) //check each level in db
             {
@@ -139,41 +127,6 @@ namespace HoopStackWebsite.Pages
                     return level;
             }
             return null;
-        }
-
-        public void InsertDb(Level newLevel) //method for inserting a level to db
-        {
-            LevelModel newLevelModel = toLevelModel(newLevel); //make LevelModel from newLevel for db entry in a horrible way
-            Database.InsertLevel(newLevelModel);
-        }
-
-        public LevelModel toLevelModel(Level newLevel) //method to convert LevelModel to Level
-        {
-            LevelModel newLevelModel = new LevelModel(); //make LevelModel from newLevel
-            newLevelModel.LevelNum = newLevel.LevelNum;
-            newLevelModel.NumStacks = newLevel.Stacks.Count;
-            if (newLevel.Stacks.Count >= 1)
-                newLevelModel.Stack1 = string.Join(",", newLevel.Stacks[0]);
-            if (newLevel.Stacks.Count >= 2)
-                newLevelModel.Stack2 = string.Join(",", newLevel.Stacks[1]);
-            if (newLevel.Stacks.Count >= 3)
-                newLevelModel.Stack3 = string.Join(",", newLevel.Stacks[2]);
-            if (newLevel.Stacks.Count >= 4)
-                newLevelModel.Stack4 = string.Join(",", newLevel.Stacks[3]);
-            if (newLevel.Stacks.Count >= 5)
-                newLevelModel.Stack5 = string.Join(",", newLevel.Stacks[4]);
-            if (newLevel.Stacks.Count >= 6)
-                newLevelModel.Stack6 = string.Join(",", newLevel.Stacks[5]);
-            if (newLevel.Stacks.Count >= 7)
-                newLevelModel.Stack7 = string.Join(",", newLevel.Stacks[6]);
-            if (newLevel.Stacks.Count >= 8)
-                newLevelModel.Stack8 = string.Join(",", newLevel.Stacks[7]);
-            if (newLevel.Stacks.Count >= 9)
-                newLevelModel.Stack9 = string.Join(",", newLevel.Stacks[8]);
-            if (newLevel.Stacks.Count >= 10)
-                newLevelModel.Stack10 = string.Join(",", newLevel.Stacks[9]);
-
-            return newLevelModel;
         }
     }
 }

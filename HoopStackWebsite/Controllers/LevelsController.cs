@@ -19,13 +19,14 @@ namespace HoopStackWebsite.Controllers
             this.levelService = levelService;
         }
 
+        //get levels from level db
         [HttpGet]
         public IEnumerable<Level> Get()
         {
             return levelService.GetLevels();
         }
 
-        // ?????????
+        // patch updates to levels 
         [HttpPatch]
         public ActionResult Patch(Level level)
         {

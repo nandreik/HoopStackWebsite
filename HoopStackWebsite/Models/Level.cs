@@ -123,6 +123,35 @@ namespace HoopStackWebsite.Models.Level
             HoopStackSolver.solveLevel(this);
         }
 
+        public LevelModel toLevelModel(Level newLevel) //method to convert LevelModel to Level
+        {
+            LevelModel newLevelModel = new LevelModel(); //make LevelModel from newLevel
+            newLevelModel.LevelNum = newLevel.LevelNum;
+            newLevelModel.NumStacks = newLevel.Stacks.Count;
+            if (newLevel.Stacks.Count >= 1)
+                newLevelModel.Stack1 = string.Join(",", newLevel.Stacks[0]);
+            if (newLevel.Stacks.Count >= 2)
+                newLevelModel.Stack2 = string.Join(",", newLevel.Stacks[1]);
+            if (newLevel.Stacks.Count >= 3)
+                newLevelModel.Stack3 = string.Join(",", newLevel.Stacks[2]);
+            if (newLevel.Stacks.Count >= 4)
+                newLevelModel.Stack4 = string.Join(",", newLevel.Stacks[3]);
+            if (newLevel.Stacks.Count >= 5)
+                newLevelModel.Stack5 = string.Join(",", newLevel.Stacks[4]);
+            if (newLevel.Stacks.Count >= 6)
+                newLevelModel.Stack6 = string.Join(",", newLevel.Stacks[5]);
+            if (newLevel.Stacks.Count >= 7)
+                newLevelModel.Stack7 = string.Join(",", newLevel.Stacks[6]);
+            if (newLevel.Stacks.Count >= 8)
+                newLevelModel.Stack8 = string.Join(",", newLevel.Stacks[7]);
+            if (newLevel.Stacks.Count >= 9)
+                newLevelModel.Stack9 = string.Join(",", newLevel.Stacks[8]);
+            if (newLevel.Stacks.Count >= 10)
+                newLevelModel.Stack10 = string.Join(",", newLevel.Stacks[9]);
+
+            return newLevelModel;
+        }
+
         public override string ToString() //turn this level obj into a json format
         {
             return JsonSerializer.Serialize<Level>(this);
