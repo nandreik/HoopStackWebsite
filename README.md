@@ -1,6 +1,8 @@
 # Hoop Stack Solver
 
+<kbd>
 ![alt text](https://github.com/nandreik/HoopStackWebsite/blob/master/HoopStackWebsite/wwwroot/images/hssite.PNG)
+</kbd>
 
 This project is a level solver for the mobile game Hoop Stack. 
 
