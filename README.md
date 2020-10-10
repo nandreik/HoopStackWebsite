@@ -1,7 +1,6 @@
 # Hoop Stack Solver
-https://hoopstacksolver.azurewebsites.net/
 
-**IF SITE IS DOWN IT IS POSSIBLY BECAUSE THE 1HR/DAY COMPUTATION TIME FROM THE FREE AZURE HOST SERVICE IS USED UP**
+![alt text](https://github.com/nandreik/HoopStackWebsite/blob/master/HoopStackWebsite/wwwroot/images/hssite.PNG)
 
 This project is a level solver for the mobile game Hoop Stack. 
 
