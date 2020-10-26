@@ -1,8 +1,6 @@
 # Hoop Stack Solver
 
-*This app was deployed with Azure, however I ran into issues with their free service plan. So here is an image of what it looks like. 
-
-<kbd><img src="https://github.com/nandreik/HoopStackWebsite/blob/master/HoopStackWebsite/wwwroot/images/hssite.PNG" /></kbd>
+https://hoopstacksolver.azurewebsites.net/
 
 This project is a level solver for the mobile game Hoop Stack. 
 
